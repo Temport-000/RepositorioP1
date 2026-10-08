@@ -92,13 +92,12 @@ public class Tienda {
     }
 
     public String eliminarProducto(String codigo) {
-        Optional<Producto> producto = buscarProducto(codigo);
-        if (producto.isPresent()) {
-            listaProductos.remove(producto.get());
+        if (listaProductos.remove(codigo) != null) {
             return "El producto fue eliminado exitosamente";
         }
         return "No se puede eliminar, no existe un producto con ese codigo.";
     }
+
     public String registrarFactura(Factura factura) {
         if (buscarFactura(factura.codigo()).isEmpty()) {
             listaFacturas.add(factura);
@@ -141,7 +140,7 @@ public class Tienda {
 //punto 2
     public ArrayList<String> BuscarProductoMayor10YMenor50(){
         ArrayList<String> listaMayor10Menor50 = new ArrayList<>();
-        for(Producto aux:listaProductos.value()){
+        for(Producto aux:listaProductos.values()){
             if(aux.getCantidadDisponible()>= 10 && aux.getCantidadDisponible()<50){
              listaMayor10Menor50.add(aux.getCodigo());
             }
@@ -150,7 +149,7 @@ public class Tienda {
     }
 //Punto 3
   public ArrayList <Cliente> buscarFecha (){
-        LocalDate fecha =(2026 , 10 , 7);
+        LocalDate fecha =LocalDate.of(2026 , 10 , 7);
          ArrayList<Cliente> listaEnFecha= new ArrayList();
          for(Factura aux: listaFacturas){
              if(aux.fecha().isEqual(fecha));
