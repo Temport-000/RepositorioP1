@@ -157,7 +157,18 @@ public class Tienda {
 
         return listaEnFecha;
   }
+//Punto 4
+    public ArrayList<Factura> listarFacturasR(){
+        ArrayList<Factura> listaR= new ArrayList();
+        for(Cliente aux:listaClientes){
+            char letra= aux.getNombreCompleto().charAt(0);
+            if(letra=='R'||letra=='r'){
+                listaR.addAll(aux.getListaFacturas());
+            }
 
+        }
+        return listaR;
+    }
 
 
 }
