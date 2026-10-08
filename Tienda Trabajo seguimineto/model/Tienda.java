@@ -1,6 +1,7 @@
 package model;
 
 import java.util.*;
+import java.time.LocalDate;
 
 public class Tienda {
 
@@ -10,8 +11,7 @@ public class Tienda {
 
     private final ArrayList<Cliente> listaClientes = new ArrayList<>();
     private final List<Factura> listaFacturas = new LinkedList<>();
-    private final ArrayList<Producto> listaProductos = new ArrayList<>();
-
+    private final HashMap<String,Producto> listaProductos = new HashMap<>();
 
     public Tienda(String nombre, String nit,String telefono){
         this.nombre = nombre;
@@ -36,6 +36,7 @@ public class Tienda {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
+
 
     public String registrarCliente(Cliente cliente){
         Cliente clienteEncontrado = buscarCliente(cliente.getDocumentoIdentidad());
@@ -72,26 +73,24 @@ public class Tienda {
     }
 
     public String registrarProducto(Producto producto) {
-        if (buscarProducto(producto.getCodigo()).isEmpty()) {
-            listaProductos.add(producto);
-            return "El producto fue registrado exitosamente";
+        if (listaProductos.containsKey(producto.getCodigo())) {
+            return "No se puede registrar, ya existe un producto con ese codigo.";
         }
-        return "No se puede registrar, ya existe un producto con ese codigo.";
+        listaProductos.put(producto.getCodigo(), producto);
+        return "El producto fue registrado exitosamente";
     }
+
     public Optional<Producto> buscarProducto(String codigo) {
-        return listaProductos.stream()
-                .filter(producto -> producto.getCodigo().equals(codigo))
-                .findFirst();
+        return Optional.ofNullable(listaProductos.get(codigo));
     }
     public String actualizarProducto(Producto productoNuevo) {
-        for (int i = 0; i < listaProductos.size(); i++) {
-            if (listaProductos.get(i).getCodigo().equals(productoNuevo.getCodigo())) {
-                listaProductos.set(i, productoNuevo);
-                return "El producto fue actualizado exitosamente";
-            }
+        if (!listaProductos.containsKey(productoNuevo.getCodigo())) {
+            return "No se puede actualizar, no existe un producto con ese codigo.";
         }
-        return "No se puede actualizar, no existe un producto con ese codigo.";
+        listaProductos.put(productoNuevo.getCodigo(), productoNuevo);
+        return "El producto fue actualizado exitosamente";
     }
+
     public String eliminarProducto(String codigo) {
         Optional<Producto> producto = buscarProducto(codigo);
         if (producto.isPresent()) {
@@ -127,21 +126,21 @@ public class Tienda {
 
     public Optional<Factura> buscarFactura (String codigo){
         return listaFacturas.stream().filter(factura->factura.codigo().equals(codigo)).findFirst();
-}
-
-public ArrayList<Producto> buscarProductoMayor10 (){
-        ArrayList<Producto> listaProducoMayor10= new ArrayList<>();
-  for(Producto aux: listaProductos){
-      if(aux.getCantidadDisponible()>= 10){
-        listaProducoMayor10.add(aux);
-      }
-  }
-   return listaProducoMayor10;
-}
-
+    }
+// Taller
+//Punto 1
+    public List<Producto> buscarProductoMayor10 (){
+        List<Producto> listaProducoMayor10= new LinkedList<>();
+        for(Producto aux: listaProductos.values()){
+            if(aux.getCantidadDisponible()>= 10){
+                listaProducoMayor10.add(aux);
+            }
+        }
+        return listaProducoMayor10;
+    }
 //punto 2
-    public ArrayList<Producto> BuscarProductoMayor10YMenor50(){
-        ArrayList<Producto> listaMayor10Menor50 = new ArrayList<>();
+    public ArrayList<String> BuscarProductoMayor10YMenor50(){
+        ArrayList<String> listaMayor10Menor50 = new ArrayList<>();
         for(Producto aux:listaProductos.value()){
             if(aux.getCantidadDisponible()>= 10 && aux.getCantidadDisponible()<50){
              listaMayor10Menor50.add(aux.getCodigo());
@@ -149,6 +148,16 @@ public ArrayList<Producto> buscarProductoMayor10 (){
         }
         return listaMayor10Menor50;
     }
+//Punto 3
+  public ArrayList <Cliente> buscarFecha (){
+        LocalDate fecha =(2026 , 10 , 7);
+         ArrayList<Cliente> listaEnFecha= new ArrayList();
+         for(Factura aux: listaFacturas){
+             if(aux.fecha().isEqual(fecha));
+         }
+
+        return listaEnFecha;
+  }
 
 
 
