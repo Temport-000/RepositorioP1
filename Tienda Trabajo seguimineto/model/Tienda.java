@@ -150,7 +150,7 @@ public class Tienda {
 //Punto 3
   public ArrayList <Cliente> buscarFecha (){
         LocalDate fecha =LocalDate.of(2026 , 10 , 7);
-         ArrayList<Cliente> listaEnFecha= new ArrayList();
+         ArrayList<Cliente> listaEnFecha= new ArrayList<>();
          for(Factura aux: listaFacturas){
              if(aux.fecha().isEqual(fecha));
          }
@@ -159,7 +159,7 @@ public class Tienda {
   }
 //Punto 4
     public ArrayList<Factura> listarFacturasR(){
-        ArrayList<Factura> listaR= new ArrayList();
+        ArrayList<Factura> listaR= new ArrayList<>();
         for(Cliente aux:listaClientes){
             char letra= aux.getNombreCompleto().charAt(0);
             if(letra=='R'||letra=='r'){
