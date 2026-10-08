@@ -139,7 +139,16 @@ public ArrayList<Producto> buscarProductoMayor10 (){
    return listaProducoMayor10;
 }
 
-
+//punto 2
+    public ArrayList<Producto> BuscarProductoMayor10YMenor50(){
+        ArrayList<Producto> listaMayor10Menor50 = new ArrayList<>();
+        for(Producto aux:listaProductos.value()){
+            if(aux.getCantidadDisponible()>= 10 && aux.getCantidadDisponible()<50){
+             listaMayor10Menor50.add(aux.getCodigo());
+            }
+        }
+        return listaMayor10Menor50;
+    }
 
 
 
