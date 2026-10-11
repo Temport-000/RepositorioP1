@@ -181,6 +181,21 @@ public ArrayList<Factura> listaFacturaCelular(Producto producto){
         }
 return listaFactura16ProMax;
 }
+//punto 6
+   public ArrayList<Factura> listarFacturasCLiente (Cliente cliente, Producto producto){
+        ArrayList<Factura> listaDeFacturasCliente= new ArrayList<>();
+        for(Cliente auxCL: listaClientes){
+            for(Factura auxFac: auxCL.getListaFacturas()){
+                for(DetalleFactura auxDeta:auxFac.listaDetallesFactura()){
+                   if(auxDeta.getProducto().equals(producto)&&auxCL.equals(cliente)){
+                       listaDeFacturasCliente.add(auxFac);
+                       break;
+                   }
+                }
+            }
+        }
+        return listaDeFacturasCliente;
+   }
 
 
 
