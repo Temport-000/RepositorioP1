@@ -196,6 +196,18 @@ return listaFactura16ProMax;
         }
         return listaDeFacturasCliente;
    }
+//Punto 7
+    public ArrayList<Producto> listarProductosCategoria (Categoria categoria){
+        ArrayList<Producto> listaProductosCat= new ArrayList<>();
+        for(Producto auxPro: listaProductos.values()){
+            if(categoria.equals(auxPro.getCategoria())){
+                listaProductosCat.add(auxPro);
+            }
+        }
+        return  listaProductosCat;
+    }
+
+
 
 
 
