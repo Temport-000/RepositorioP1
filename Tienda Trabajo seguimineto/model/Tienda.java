@@ -206,7 +206,16 @@ return listaFactura16ProMax;
         }
         return  listaProductosCat;
     }
-
+//punto 8
+    public ArrayList<Producto> filtrarValorProducto(double valorMin, double valorMax){
+        ArrayList<Producto> filtroValorProductos= new ArrayList<>();
+        for(Producto auxPro:listaProductos.values()){
+            if(auxPro.getValor()>=valorMin && auxPro.getValor()<=valorMax){
+                filtroValorProductos.add(auxPro);
+            }
+        }
+        return filtroValorProductos;
+    }
 
 
 
