@@ -165,10 +165,25 @@ public class Tienda {
             if(letra=='R'||letra=='r'){
                 listaR.addAll(aux.getListaFacturas());
             }
-
         }
         return listaR;
     }
+//Punto 5
+public ArrayList<Factura> listaFacturaCelular(Producto producto){
+        ArrayList<Factura> listaFactura16ProMax = new ArrayList<>();
+        for(Factura auxFac: listaFacturas){
+           for(DetalleFactura auxDeta: auxFac.listaDetallesFactura()){
+               if(auxDeta.getProducto().equals(producto)){
+                   listaFactura16ProMax.add(auxFac);
+                   break;
+               }
+           }
+        }
+return listaFactura16ProMax;
+}
+
+
+
 
 
 }
