@@ -152,7 +152,9 @@ public class Tienda {
         LocalDate fecha =LocalDate.of(2026 , 10 , 7);
          ArrayList<Cliente> listaEnFecha= new ArrayList<>();
          for(Factura aux: listaFacturas){
-             if(aux.fecha().isEqual(fecha));
+             if(aux.fecha().isEqual(fecha)){
+                 listaEnFecha.add(aux.cliente());
+             }
          }
 
         return listaEnFecha;
@@ -216,10 +218,23 @@ return listaFactura16ProMax;
         }
         return filtroValorProductos;
     }
+//Punto 9
+    public ArrayList<Producto> listarProductosMenorAMayor (){
+        ArrayList<Producto> listaProductosMenorAMayor= new ArrayList<>(listaProductos.values());
+        for(int i=0; i<listaProductosMenorAMayor.size()-1; i++){
+            for(int j=0; j<listaProductosMenorAMayor.size()-1; j++){
+             if(listaProductosMenorAMayor.get(j).getValor()>listaProductosMenorAMayor.get(j+1).getValor()){
+                 Producto momento=listaProductosMenorAMayor.get(j);
+                 listaProductosMenorAMayor.set(j,listaProductosMenorAMayor.get(j+1));
+                 listaProductosMenorAMayor.set(j+1,momento);
+             }
+            }
+        }
+        return listaProductosMenorAMayor;
+    }
 
 
 
 
 
-
-}
+} 
