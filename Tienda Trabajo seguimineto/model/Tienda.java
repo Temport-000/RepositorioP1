@@ -232,9 +232,17 @@ return listaFactura16ProMax;
         }
         return listaProductosMenorAMayor;
     }
+//Punto 10
+public Optional<Producto> buscarProductoMasCaro(){
+    Producto masCaro = null;
+    for(Producto auxPro: listaProductos.values()){
+        if(masCaro == null || auxPro.getValor() > masCaro.getValor()){
+            masCaro = auxPro;
+        }
+    }
+    return Optional.ofNullable(masCaro);
+}
 
 
 
-
-
-} 
+}
