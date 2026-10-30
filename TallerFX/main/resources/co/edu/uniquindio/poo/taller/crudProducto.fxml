@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.poo.taller.viewController.ProductoViewController">
+   <children>
+      <Text layoutX="258.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestion Productos" wrappingWidth="102.681640625" />
+      <Text layoutX="150.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID:" wrappingWidth="14.208984375" />
+      <Text layoutX="150.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre:" wrappingWidth="65.447265625" />
+      <Text layoutX="150.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stock:" wrappingWidth="46.58203125" />
+      <TextField fx:id="txtId" layoutX="234.0" layoutY="86.0" promptText="Ingresar ID" />
+      <TextField fx:id="txtName" layoutX="234.0" layoutY="113.0" promptText="Ingresar Nombre" />
+      <TextField fx:id="txtStock" layoutX="234.0" layoutY="139.0" promptText="Ingresar Stock" />
+      <Button fx:id="btnAgregarProducto" layoutX="173.0" layoutY="173.0" mnemonicParsing="false" onAction="#onAgregarProducto" text="Agregar" />
+      <Button fx:id="btnActualizarProducto" layoutX="241.0" layoutY="173.0" mnemonicParsing="false" onAction="#onActualizarProducto" text="Actualizar" />
+      <Button fx:id="btnEliminar" layoutX="315.0" layoutY="173.0" mnemonicParsing="false" onAction="#onEliminar" text="Eliminar" />
+      <Button fx:id="btnLimpiar" layoutX="383.0" layoutY="173.0" mnemonicParsing="false" onAction="#onLimpiar" text="Limpiar" />
+      <TableView fx:id="tblListProducto" layoutX="196.0" layoutY="211.0" prefHeight="152.0" prefWidth="226.0">
+        <columns>
+            <TableColumn fx:id="tbcId"    prefWidth="75.0" text="ID" />
+            <TableColumn fx:id="tbcName"  prefWidth="75.0" text="Nombre" />
+            <TableColumn fx:id="tbcStock" prefWidth="75.0" text="Stock" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
